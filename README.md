@@ -19,7 +19,7 @@ Declare Book for Class :
 
 read page 10 of book :
 
-    echo $epub->read('10');
+    echo $epub->read('Option');
     
 Option List :
 
