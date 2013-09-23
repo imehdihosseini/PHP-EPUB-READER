@@ -1,6 +1,6 @@
 <?php
 /*
-  epub Class
+  	epub Class
 	Programmer : mehdi hosseini
 	Finish Date : 04 April 2012
 	Last Update : 11 September 2012
@@ -31,7 +31,7 @@ protected $PagesName;
     
     
     public function read($page){
-        $temp = ( strpos($page, '-') > 0 ? '-' : ( strpos($page, '<') > 0 ? '<' : ( strpos($page, '>') > 0 ? '>' : '' ) ) );
+        $temp = ( strpos($page, '-') > 0 ? '-' : ( substr($page, 1, 1) == '<' ? '<' : ( substr($page, 1, 1) == '>'  ? '>' : ( substr($page, 0, 1) == '*' ? '*' : '' ) ) ) );
         $this->SetPages();
         switch($temp){
         case '-':
@@ -58,6 +58,12 @@ protected $PagesName;
                 include_once($this->BookRoot.'/'.$this->PagesName[$i]);
             }
             unset($from);
+            break;
+        case '*':
+            //Load All Pages.
+            for ( $i=0; $i < sizeof($this->PagesName);  $i++ ){
+                include_once($this->BookRoot.'/'.$this->PagesName[$i]);
+            }
             break;
         case '':
             //Just this page.
@@ -192,9 +198,9 @@ class pages extends epub{
 		return $this->get();	
 	}
     
-    public function SetPages(){
-        $this->PagesName = $this->GetPages();   
-    }
+        public function SetPages(){
+                $this->PagesName = $this->GetPages();
+        }
 }
 
 
