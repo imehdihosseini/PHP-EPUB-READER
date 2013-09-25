@@ -1,18 +1,4 @@
 <?php
-/*
-  	epub Class
-	Programmer : mehdi hosseini
-	Finish Date : 04 April 2012
-	Last Update : 11 September 2012
-	Version : 1.0.0.0
-	Example :
-				$test = new pages('3');
-				echo $test->GetPages(); returns an array
-				
-				$test2 = new images('3');
-				echo $test2->GetImages(); returns an array
-*/
-
 
 class epub{
     
